@@ -43,9 +43,11 @@ export class MediaUdp {
         const videoCodec = normalizeVideoCodec(this.mediaConnection.streamOptions.videoCodec);
         switch (videoCodec)
         {
+            case "h264_mediacodec":
             case "H264":
                 this._videoPacketizer = new VideoPacketizerH264(this);
                 break;
+            case "hevc_mediacodec":
             case "H265":
                 this._videoPacketizer = new VideoPacketizerH265(this);
                 break;

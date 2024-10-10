@@ -1,5 +1,7 @@
-export function normalizeVideoCodec(codec: string): "H264" | "H265" | "VP8" | "VP9" | "AV1"
+export function normalizeVideoCodec(codec: string): "H264" | "H265" | "VP8" | "VP9" | "AV1" | "h264_mediacodec" | "hevc_mediacodec"
 {
+    if (codec === "h264_mediacodec" || codec === "hevc_mediacodec")
+        return codec;
     if (/H\.?264|AVC/i.test(codec))
         return "H264";
     if (/H\.?265|HEVC/i.test(codec))

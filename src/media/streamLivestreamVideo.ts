@@ -18,9 +18,11 @@ export function streamLivestreamVideo(input: string | Readable, mediaUdp: MediaU
         let videoOutput: Transform;
 
         switch(videoCodec) {
+            case 'h264_mediacodec':
             case 'H264':
                 videoOutput = new H264NalSplitter();
                 break;
+            case 'hevc_mediacodec':
             case 'H265':
                 videoOutput = new H265NalSplitter();
                 break;
@@ -90,7 +92,7 @@ export function streamLivestreamVideo(input: string | Readable, mediaUdp: MediaU
                     .size(`${streamOpts.width}x${streamOpts.height}`)
                     .fpsOutput(streamOpts.fps)
                     .videoBitrate(`${streamOpts.bitrateKbps}k`)
-                    .format('h264')
+                    .format(videoCodec)
                     .outputOptions([
                         '-tune zerolatency',
                         '-pix_fmt yuv420p',
