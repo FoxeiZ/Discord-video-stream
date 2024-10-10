@@ -85,7 +85,10 @@ export class Streamer {
     }
 
     public stopStream(): void {
-        const stream = this.voiceConnection?.streamConnection;
+        if (!this.voiceConnection)
+            return;
+
+        const stream = this.voiceConnection.streamConnection;
     
         if(!stream) return;
     
