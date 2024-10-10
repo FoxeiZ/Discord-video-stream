@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "postinstall": "tsc --outDir ./build",
+    "prepare": "tsc",
     "upgrade-package-to-import": "yarn upgrade package-to-import && cd node_modules/package-to-import && yarn build"
   },
   "keywords": [
